@@ -4,6 +4,7 @@
 
 # Emacs temp files
 \#*
+.\#*
 
 # IntelliJ projects
 .idea
