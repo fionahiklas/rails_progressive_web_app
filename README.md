@@ -39,3 +39,14 @@ bundle install --path vendor
 
 
 
+## Notes
+
+* You need to install the following packages with apt on Ubuntu
+ * build-essential
+ * ruby-dev
+ * zlib1g-dev
+ * libxml2-dev
+ 
+ 
+
+
