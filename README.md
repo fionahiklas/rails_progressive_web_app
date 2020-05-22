@@ -59,6 +59,31 @@ bundle exec rails new .
 
 This creates alot of files that need to be committed to git
 
+Starting the server seemed to kick of the generation of more files although this may have been a delayed impact of
+WebPacker failing due to lack of installed `yarn` tool for node.
+
+```
+bin/rails server
+```
+
+This command starts the rails server on port 3000
+
+
+### Adding the PWA app
+
+Creating a new controller for the application
+
+```
+bin/rails generate controller pwa main login token
+```
+
+
+## Notes
+
+### PWA
+
+* [SSO OAuth2.0 login with full screen](https://medium.com/@jonnykalambay/progressive-web-apps-with-oauth-dont-repeat-my-mistake-16a4063ce113)
+
 
 
 
