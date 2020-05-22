@@ -83,7 +83,7 @@ bin/rails generate controller pwa main login token
 ### PWA
 
 * [SSO OAuth2.0 login with full screen](https://medium.com/@jonnykalambay/progressive-web-apps-with-oauth-dont-repeat-my-mistake-16a4063ce113)
-
+* [Is service worker ready https://pwabook.com/isswready](https://jakearchibald.github.io/isserviceworkerready/)
 
 
 
