@@ -33,20 +33,36 @@ bundle install --path vendor
 
 ## Rails Setup
 
+### Prerequites 
+
+You need to install the following packages with apt on Ubuntu
+ 
+* build-essential
+* ruby-dev
+* zlib1g-dev
+* libxml2-dev
+* yarnpkg
+ 
+__Note__: There is a package mapping from "yarn" to "cmdtest" on Ubuntu 20.04.  The package that gets installed is
+a testing tool that appears to be for python.  The Ubuntu package installs yarn as `yarnpkg` fixed with this hack
+
+```
+ln -s /usr/bin/yarnpkg /usr/local/bin/yarn
+```
+
 
 ### Creating project
 
+```
+bundle exec rails new .
+```
+
+This creates alot of files that need to be committed to git
 
 
 
-## Notes
 
-* You need to install the following packages with apt on Ubuntu
- * build-essential
- * ruby-dev
- * zlib1g-dev
- * libxml2-dev
- 
+
  
 
 
