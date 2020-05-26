@@ -85,6 +85,39 @@ bin/rails generate controller pwa main login token
 * [SSO OAuth2.0 login with full screen](https://medium.com/@jonnykalambay/progressive-web-apps-with-oauth-dont-repeat-my-mistake-16a4063ce113)
 * [Is service worker ready https://pwabook.com/isswready](https://jakearchibald.github.io/isserviceworkerready/)
 
+### Rails
+
+* [Webpacker](https://github.com/rails/webpacker)
+* Check the status of webpacker with this command
+
+```
+bin/rails webpacker:info
+```
+
+* Hit an issue with the following error being shown by this command
+
+```
+Ruby: ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-linux-gnu]
+Rails: 6.0.3.1
+Webpacker: 4.2.2
+Node: v10.19.0
+Yarn: 1.22.4
+
+npm ERR! missing: @rails/webpacker@4.2.2, required by rails_progressive_web_app@0.1.0
+@rails/webpacker: 
+rails_progressive_web_app@0.1.0 /home/fiona/wd/nps/playground/rails-progressive-web-app
+└── UNMET DEPENDENCY @rails/webpacker@4.2.2 
+
+Is bin/webpack present?: true
+Is bin/webpack-dev-server present?: true
+Is bin/yarn present?: true
+```
+
+* It seems that this is covered by this [bug](https://github.com/rails/webpacker/issues/1078)
+* Also seems that `npm` shouldn't be used to handle dependencies
+
+
+ 
 
 
 

@@ -1,5 +1,8 @@
 
-function register_main_service_worker() {
+function PwaMain() {}
+
+
+PwaMain.register_main_service_worker = function() {
     if ("serviceworker" in navigator) {
 	navigator.serviceWorker.register("/pwa_serviceworker.js")
 	    .then(function(registration) {
@@ -10,7 +13,7 @@ function register_main_service_worker() {
     }
 }
 
-export default register_main_service_worker;
+export default PwaMain;
 
 
 
