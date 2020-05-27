@@ -118,7 +118,13 @@ Is bin/yarn present?: true
 
 
  
+## References
 
+### Rails
+
+* [Asset pipeline](https://guides.rubyonrails.org/asset_pipeline.html)
+* [Avoid CORS exceptions](https://die-antwort.eu/techblog/2018-08-avoid-invalid-cross-origin-request-with-catch-all-route/)
+* [protect from forgery API](https://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection/ClassMethods.html)
 
 
  
