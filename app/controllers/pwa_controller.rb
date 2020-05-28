@@ -7,6 +7,9 @@ class PwaController < ApplicationController
   def login
   end
 
+  def login_offline
+  end
+  
   def token
   end
 

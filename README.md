@@ -128,5 +128,14 @@ Is bin/yarn present?: true
 
 
  
+ ### PWA
+ 
+ * [PWA Structure](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/App_structure)
+ * [Securing tokens in progressive web apps](https://www.mckennaconsultants.com/securing-tokens-in-a-progressive-web-app/)
+ * [Developing PWAs, Fetch API](https://codelabs.developers.google.com/codelabs/pwa-fetch/#0)
+ * [Using Service Workers as Auth Relay](https://itnext.io/using-service-worker-as-an-auth-relay-5abc402878dd)
+ * [PWA, OAuth, Authentication in PopUps](https://medium.com/@jonnykalambay/progressive-web-apps-with-oauth-dont-repeat-my-mistake-16a4063ce113)
+ 
+ 
 
 

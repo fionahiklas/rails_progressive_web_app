@@ -16,6 +16,11 @@ PwaMain.register_main_service_worker = function() {
     }
 }
 
+PwaMain.register_login_button = function() {
+    console.log("Registering login button handler");
+    
+}
+
 export default PwaMain;
 
 
