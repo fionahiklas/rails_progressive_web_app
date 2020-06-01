@@ -2,13 +2,15 @@
 <p>Find me in app/views/pwa/login.html.erb</p>
 <p><button id="submitButton">Submit</button></p>
 <script>
-  console.log("Adding event handler to submit button");
-  var  submitButton = document.getElementById("submitButton");
-  submitButton.addEventListener("click", function() {
-      console.log("Submit button pressed");
-      window.opener.postMessage("Ho the megapode!", location.origin);
-      console.log("Sent message");
-  }
+  document.addEventListener('DOMContentLoaded', function() {
+      console.log("Adding event handler to submit button");
+      var  submitButton = document.getElementById("submitButton");
+      submitButton.addEventListener("click", function() {
+	  console.log("Submit button pressed");
+	  window.opener.postMessage("Ho the megapode!", location.origin);
+	  console.log("Sent message");
+      });
+  });			    
 </script>
 
   
