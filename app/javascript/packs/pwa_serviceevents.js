@@ -1,9 +1,12 @@
 
-function service_callback() {
-    console.log("Service callback called");
+function ServiceEvents() {}
+
+
+ServiceEvents.workerCallback = function(event) {
+    console.log("Service callback called: ", event);
 }
 
-export default service_callback;
+export default ServiceEvents;
 
 
 

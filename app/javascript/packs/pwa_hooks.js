@@ -6,5 +6,6 @@ import PWAMain from 'packs/pwa_main';
 document.addEventListener('DOMContentLoaded', function(){
     console.log("Document ready, registering the main service worker");
     PWAMain.register_main_service_worker();
+    PWAMain.register_login_button();
     console.log("All done.");
 });

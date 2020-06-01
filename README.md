@@ -124,11 +124,11 @@ Is bin/yarn present?: true
 
 * [Asset pipeline](https://guides.rubyonrails.org/asset_pipeline.html)
 * [Avoid CORS exceptions](https://die-antwort.eu/techblog/2018-08-avoid-invalid-cross-origin-request-with-catch-all-route/)
-* [protect from forgery API](https://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection/ClassMethods.html)
-
+* [Protect from forgery API](https://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection/ClassMethods.html)
+* [Adding custom JavaScript to Rails](https://dev.to/morinoko/adding-custom-javascript-in-rails-6-1ke6)
 
  
- ### PWA
+### PWA
  
  * [PWA Structure](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/App_structure)
  * [Securing tokens in progressive web apps](https://www.mckennaconsultants.com/securing-tokens-in-a-progressive-web-app/)
@@ -138,4 +138,8 @@ Is bin/yarn present?: true
  
  
 
+### JavaScript
 
+* [WebPack](https://webpack.js.org/guides/getting-started/)
+* [Beginners guide to WebPack](https://medium.com/javascript-training/beginner-s-guide-to-webpack-b1f1a3638460)
+* 
