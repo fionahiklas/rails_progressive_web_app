@@ -27,7 +27,7 @@ PwaMain.register_login_button = function() {
     var loginButton = document.getElementById("loginButton");
     loginButton.addEventListener('click', function() {
 	console.log("loginButton clicked, opening popup");
-	popupWindow = window.open("/pwa/login", "Login Window", "width=350,height=250");
+	PwaMain.popupWindow = window.open("/pwa/login", "Login Window", "width=350,height=250");
 	console.log("window should be open now");
     });
     window.addEventListener('message', windowMessageListener);

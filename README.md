@@ -142,4 +142,7 @@ Is bin/yarn present?: true
 
 * [WebPack](https://webpack.js.org/guides/getting-started/)
 * [Beginners guide to WebPack](https://medium.com/javascript-training/beginner-s-guide-to-webpack-b1f1a3638460)
-* 
+* [PostMessage API](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
+* [Window API](https://developer.mozilla.org/en-US/docs/Web/API/Window)
+* [Location API](https://developer.mozilla.org/en-US/docs/Web/API/Location)
+
