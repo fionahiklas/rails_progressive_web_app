@@ -3,7 +3,7 @@
 Simple progressive web application using rails as the server and 
 REST API.
 
-Testing out authentication and such things
+Testing out authentication and such things.
 
 ## Quickstart
 
@@ -76,6 +76,62 @@ Creating a new controller for the application
 ```
 bin/rails generate controller pwa main login token
 ```
+
+
+## Network Setup
+
+In order to test this application with windows single sign on it needs to have a Windows client machine
+and Windows server.  It seems that these also need to have FQDN so need to setup a DNS server to make
+sure that this resolves to the appropriate IP address.
+
+Getting this working requires changes to VMWare's network configuration as well as running a private
+DNS server.
+
+
+### VMWare Player network configuration
+
+Need to make sure the correct IP addresses are used
+
+
+### DNS Server setup
+
+Using [dnsmasq](https://wiki.debian.org/dnsmasq) to set this up.
+
+Installing this on Ubuntu 
+
+```
+apt install dnsmasq
+```
+
+On my Linux laptop this installs but fails to start because there is already something listening on 
+port 53. checking this with lsof
+
+```
+lsof -i :53
+
+COMMAND   PID            USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+systemd-r 648 systemd-resolve   12u  IPv4  23820      0t0  UDP localhost:domain 
+systemd-r 648 systemd-resolve   13u  IPv4  23821      0t0  TCP localhost:domain
+```
+
+Copy the files from `network/dnsmasq.d` to `/etc/dnsmasq.d` and restart using systemctl
+
+```
+systemctl restart dnsmasq
+```
+
+Test that resolution works
+
+```
+dig windowsserver.vms.iwalab.net @localhost -p 8853
+```
+
+
+## Windows Server 2012
+
+### Installing Enterprise CA
+
+
 
 
 ## Notes

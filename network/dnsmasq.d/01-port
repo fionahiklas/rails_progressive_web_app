@@ -1,0 +1,8 @@
+
+# Listen on non-standard port
+port=8853
+
+# Only listen on the VMWare interfaces
+interface=vmnet1
+interface=vmnet8
+
