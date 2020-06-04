@@ -92,19 +92,44 @@ DNS server.
 
 Need to make sure the correct IP addresses are used
 
+First of all make sure that the VMWare player isn't running and then execute the following command to 
+stop the services
+
+```
+/etc/init.d/vmware stop
+```
+
+This should remove any `vmnet` devices, check with `ifconfig`
+
+
+
+
+
 
 ### DNS Server setup
 
 Using [dnsmasq](https://wiki.debian.org/dnsmasq) to set this up.
 
-Installing this on Ubuntu 
+After much hacking around it seems that `dnsmasq` can't be persuaded to connect to only the VMWare network 
+interface or it's address.  It seems to obstinately connect to `0.0.0.0` all the time.  The only solution I've
+found is to run it in a docker container, an [excellent image](https://hub.docker.com/r/andyshinn/dnsmasq) is 
+available on [Docker hub](https://hub.docker.com/) run using the following command
 
 ```
-apt install dnsmasq
+docker run -d -p 192.168.209.1:53:53/tcp -p 192.168.209.1:53:53/udp --cap-add=NET_ADMIN andyshinn/dnsmasq:2.75 \
+--address=/windowsserver.iwalab.internal/192.168.209.10 \
+--address=/workstation.iwalab.internal/192.168.209.20 \
+--address=/linuxhost.iwalab.internal/192.168.209.1 
 ```
 
-On my Linux laptop this installs but fails to start because there is already something listening on 
-port 53. checking this with lsof
+Test that resolution works
+
+```
+dig windowsserver.iwalab.internal @192.168.209.1
+```
+
+
+On Ubuntu 20.04 it seems that there is a `systemd-resolved` process that actually handles DNS
 
 ```
 lsof -i :53
@@ -114,17 +139,7 @@ systemd-r 648 systemd-resolve   12u  IPv4  23820      0t0  UDP localhost:domain
 systemd-r 648 systemd-resolve   13u  IPv4  23821      0t0  TCP localhost:domain
 ```
 
-Copy the files from `network/dnsmasq.d` to `/etc/dnsmasq.d` and restart using systemctl
 
-```
-systemctl restart dnsmasq
-```
-
-Test that resolution works
-
-```
-dig windowsserver.vms.iwalab.net @localhost -p 8853
-```
 
 
 ## Windows Server 2012
@@ -201,4 +216,16 @@ Is bin/yarn present?: true
 * [PostMessage API](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
 * [Window API](https://developer.mozilla.org/en-US/docs/Web/API/Window)
 * [Location API](https://developer.mozilla.org/en-US/docs/Web/API/Location)
+
+
+
+### Linux
+
+* [Using journalctl to see logs](https://www.loggly.com/ultimate-guide/using-journalctl/)
+* [chroot namespaces cgroups](https://itnext.io/chroot-cgroups-and-namespaces-an-overview-37124d995e3d)
+* [Linux namespaces](https://en.wikipedia.org/wiki/Linux_namespaces)
+* [Docker RUN, CMD, ENTRYPOINT](https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/)
+
+### VMWare 
+
 

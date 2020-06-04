@@ -1,6 +1,0 @@
-# DNS entries for the Windows test VMs
-
-address=/windowsserver.vms.iwalab.net/192.168.209.10
-address=/workstation.vms.iwalab.net/192.168.209.20
-address=/linuxhost.host.iwalab.net/192.168.209.1
-
