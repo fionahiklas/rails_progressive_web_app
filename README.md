@@ -101,7 +101,7 @@ stop the services
 
 This should remove any `vmnet` devices, check with `ifconfig`
 
-
+Once all the services are stopped, copy the files from `network/vmware` to `/etc/vmware`.  On my system 
 
 
 
