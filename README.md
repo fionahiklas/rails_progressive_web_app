@@ -101,9 +101,9 @@ stop the services
 
 This should remove any `vmnet` devices, check with `ifconfig`
 
-Once all the services are stopped, copy the files from `network/vmware` to `/etc/vmware`.  On my system 
-
-
+Once all the services are stopped, copy the files from `network/vmware` to `/etc/vmware`.  
+On my system there is a `vmnet1` and a `vmnet8` device.  The former is for hostonly the latter 
+is the NAT interface and this is what the VMs are connected to.
 
 
 ### DNS Server setup
@@ -139,7 +139,47 @@ systemd-r 648 systemd-resolve   12u  IPv4  23820      0t0  UDP localhost:domain
 systemd-r 648 systemd-resolve   13u  IPv4  23821      0t0  TCP localhost:domain
 ```
 
+To list the current setup for DNS in `systemd-resolved` run the following command
 
+```
+resolvectl status
+```
+
+For example this includes the following settings for vmnet8
+
+```
+Link 10 (vmnet8)
+      Current Scopes: none
+DefaultRoute setting: no  
+       LLMNR setting: yes 
+MulticastDNS setting: no  
+  DNSOverTLS setting: no  
+      DNSSEC setting: no  
+    DNSSEC supported: no  
+```
+
+Run the following two commands to setup the DNS for that specific link
+
+```
+sudo resolvectl dns 10 192.168.209.1
+sudo resolvectl domain 10 iwalab.internal
+```
+
+Now looks like this
+
+```
+Link 10 (vmnet8)
+      Current Scopes: DNS            
+DefaultRoute setting: yes            
+       LLMNR setting: yes            
+MulticastDNS setting: no             
+  DNSOverTLS setting: no             
+      DNSSEC setting: no             
+    DNSSEC supported: no             
+  Current DNS Server: 192.168.209.1  
+         DNS Servers: 192.168.209.1  
+          DNS Domain: iwalab.internal
+```
 
 
 ## Windows Server 2012
@@ -221,11 +261,21 @@ Is bin/yarn present?: true
 
 ### Linux
 
+* [dnsmasq](https://wiki.debian.org/dnsmasq)
+* [dig](https://linux.die.net/man/1/dig)
 * [Using journalctl to see logs](https://www.loggly.com/ultimate-guide/using-journalctl/)
 * [chroot namespaces cgroups](https://itnext.io/chroot-cgroups-and-namespaces-an-overview-37124d995e3d)
 * [Linux namespaces](https://en.wikipedia.org/wiki/Linux_namespaces)
 * [Docker RUN, CMD, ENTRYPOINT](https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/)
+* [Linux capabilities](https://linux-audit.com/linux-capabilities-101/)
+* [Docker networking](https://docs.docker.com/config/containers/container-networking/)
+* [docker-dnsmasq](https://github.com/andyshinn/docker-dnsmasq/blob/master/Dockerfile)
+* [Docker hub dnsmasq](https://hub.docker.com/r/andyshinn/dnsmasq)
+* [resolvectl](https://www.freedesktop.org/software/systemd/man/resolvectl.html)
+* [systemd-resolved](https://wiki.archlinux.org/index.php/Systemd-resolved)
+
 
 ### VMWare 
 
-
+* [Editing DHCP config](https://pubs.vmware.com/workstation-11/index.jsp?topic=%2Fcom.vmware.ws.using.doc%2FGUID-04D783E1-3AB9-4D98-9891-2C58215905CC.html)
+* 
