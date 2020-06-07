@@ -184,7 +184,55 @@ MulticastDNS setting: no
 
 ## Windows Server 2012
 
+### Downloading the VM
+
+You can download a 180day evaluation version from Microsoft [here](https://www.microsoft.com/en-GB/evalcenter/evaluate-windows-server-2012-r2)
+
+Download the ISO and then follow the steps to create a new VMware virtual machine and install
+Windows 2012 R2 from the ISA.
+
+Prevent password from expiring (this is just a lab VM it's going to be thrown away) by going 
+to the start menu and searching for "Local Security Policy", then click on "Account Policies" -> 
+"Password Policy" and change "Maximum Password Age" to "365" - the VM will expire before the 
+password does.
+
+Changed to a fixed IP address by right clicking on the connection icon in the system try and 
+opening the "Network and Sharing Center".  Click on the "ethernet0" connection, "Properties" 
+button, "Internet Protocol Version 4" and then press the "properties" button.
+
+Select "Use the following IP address" and set the various options in this dialog as follows
+
+| Setting                   | Value          |
+| ------------------------- | -------------- |
+| IP Address                | 192.168.209.10 |
+| Subnet mask               | 255.255.255.0  |
+| Default gateway           | 192.168.209.2  |
+| Preferred DNS server      | 192.168.209.1  |
+
+Click apply/ok.
+
+Also go to Control Panel again and search for "Rename this computer", click on the "change" button
+and change the name to "windowsserver".  You need to restart for this change to take affect.
+
+
+
 ### Installing Enterprise CA
+
+This is a pre-requisite for setting up ADFS.
+
+* Open Server Manager
+* Select "Add Roles and Features"
+* Click next on the information page
+* "Installation Type" is "Role-based or feature-based installation"
+* "Server selection" is "windowsserver", i.e. the current machine
+* Click on "Active Directory Certificate Services"
+* Click "Add Features" on the dialog that appears
+* Click on "next"
+* 
+
+## Windows Developer VM
+
+### Downloading the VM
 
 
 
@@ -278,4 +326,9 @@ Is bin/yarn present?: true
 ### VMWare 
 
 * [Editing DHCP config](https://pubs.vmware.com/workstation-11/index.jsp?topic=%2Fcom.vmware.ws.using.doc%2FGUID-04D783E1-3AB9-4D98-9891-2C58215905CC.html)
-* 
+
+
+### Windows 2012R2
+
+* [Disable Password Expiration](http://sptrac.com/wordpress/?p=1285)
+* [Windows 2012R2 Trial version](https://www.microsoft.com/en-GB/evalcenter/evaluate-windows-server-2012-r2)
