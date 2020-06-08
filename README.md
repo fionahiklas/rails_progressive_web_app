@@ -214,6 +214,35 @@ Click apply/ok.
 Also go to Control Panel again and search for "Rename this computer", click on the "change" button
 and change the name to "windowsserver".  You need to restart for this change to take affect.
 
+### Setting up as a domain controller
+
+* Open server manager
+* Select "Add Roles and Features"
+* Click next on the information page
+* "Installation Type" is "Role-based or feature-based installation"
+* "Server selection" is "windowsserver", i.e. the current machine
+* Click on "Active Directory Domain Services"
+* Click "Add Features" on the dialog that appears
+* Click on "next"
+* There are no additional features to add at this time, so click "next" again
+* Hit "next" again at the information page
+* When ready hit "Install" on the confirmation page
+* Once installed hit "close"
+* Click on the notification flag at the top of the screen, there should be a message that allows you to "Promote this server to a domain controller"
+* This opens a dialog box
+* Select "Add a new forest"
+* Set the domain to "iwalab.internal" and click "next"
+* Leave Forest/Domain functional service
+* Setup a simple password for the DSRM - "Useless67Tree!"
+* Click "next"
+* Ignore the DNS delegation warning and click "next"
+* It will try and figure out the NetBIOS domain name which should result in "IWALAB"
+* Click "next"
+* Leave location of files and continue by clicking "next"
+* Review the changes and then click "next", ignore the warnings from the "Prerequisite Check" and hit install
+* The server should reboot
+* Log back in as "IWALAB\Adminstrator"
+
 
 
 ### Installing Enterprise CA
@@ -228,6 +257,55 @@ This is a pre-requisite for setting up ADFS.
 * Click on "Active Directory Certificate Services"
 * Click "Add Features" on the dialog that appears
 * Click on "next"
+* There are no additional features to add at this time, so click "next" again
+* Click "next" on the informational screen about making sure name and domain settings are correct
+* Leave the "Role Services" as just "Certification Authority" and click "next"
+* On the "confirmation" screen click "Install"
+* Once installed click "close"
+* Click on the notification flag at the top of the screen, there should be a message that allows you to "Configure Active Directory Certificate Services ..."
+* Leave the credentials as is and click "next"
+* On "Role Services", select "Certification Authority", click "next"
+* Leave "Setup Type" as "Enterprise CA"
+* Ensure that "CA Type" is "Root CA" and click "next"
+* Leave the option to "Create a new private key"
+* Leave key length as 2048 but change hash algorithm to "SHA256"
+* Accept the CA and DN for the "CA Name" page click "next"
+* Leave validity as 5years, click "next"
+* Leave database locations as is, click "next"
+* On confirmation page click on "Configure"
+* Then click "close" once done.
+
+
+### Windows Active Directory Federation Services
+
+* Open Server Manager
+* Select "Add Roles and Features"
+* Click next on the information page
+* "Installation Type" is "Role-based or feature-based installation"
+* "Server selection" is "windowsserver", i.e. the current machine
+* Click on "Active Directory Federation Services"
+* Click on "next"
+* Click on "next" on the features screen as there is nothing to add
+* Click "next" on the "AD FS" screen
+* Finally click "Install" on the confirmation 
+* Once installed click "close"
+
+Before proceding to configure the AD FS service a certificate is needed.  This can be 
+created from the Enterprise CA services installed before.  Follow these steps
+
+* Right-click on the Start Menu
+* Select search and look for "MMC", click on the "MMC Console"
+* If the Certificate Manager isn't available it needed to be added using the "Add/Remove Snap-in" option under the file menu
+* Click on "Certificate" and select "Computer Account" when asked what this snap-in will manage
+* Leave the computer as "Local computer" on the next screen
+* Click "Finish" and then "Ok"
+* Right click on "Personal" and then View -> Options and select "Certificate Purpose"
+* Now select "Server Authentication" from the "Intended Purposes"
+* Right click on this and select All Tasks -> Request New Certificate
+* Click "next", leave the policy as "Active Directory Enrollment Policy" and click "next"
+* 
+
+* Click on the notification flag at the top of the screen, there should be a message that allows you to "Configure Active Directory Federation Services ..."
 * 
 
 ## Windows Developer VM
@@ -332,3 +410,7 @@ Is bin/yarn present?: true
 
 * [Disable Password Expiration](http://sptrac.com/wordpress/?p=1285)
 * [Windows 2012R2 Trial version](https://www.microsoft.com/en-GB/evalcenter/evaluate-windows-server-2012-r2)
+* [Promote a server to a Domain controller](https://www.youtube.com/watch?v=at6d-6EWr7k)
+* [Setting up a Windows Server 2012 R2 Domain Controller](https://www.youtube.com/watch?v=at6d-6EWr7k)
+* [Installing Enterprise CA for AD FS](https://www.youtube.com/watch?v=y3sPX6T9W28)
+* [Installing AD FS on Windows Server 2012 R2](https://www.youtube.com/watch?v=tAQ2n-bJ6Vs)
